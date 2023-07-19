@@ -1,3 +1,11 @@
+# Suggestions for a Jumphost for the University
+
+For administrative tasks at the university, a jumphost for SSH access could be a possible solution if VPN or Wireguard (headscale/tailscale) are not (yet) an option. To set up the jumphost, see instructions below.
+
+One of the main issues is how to provide the SSH keys for the admins who want to use this jumphost. Currently there would be two solutions:
+1. you could use the [`usermgmt`](#usermgmt) feature below. This solution would already work, but it needs better documentation as you would probably need to fork the repository and create a pull request that could then be verified. This way is a bit more complicated.
+2. the second solution could use the SSH functionality of [login.bwhpc.de](login.bwhpc.de). This would require a new service to which SSH keys could be assigned. The jumphost would need to use the university's LDAP for the username and would check if the user has an SSH key associated with the jumphost service at [login.bwhpc.de](login.bwhpc.de). Here some additional attributes need to be requested from the IdP, either a new entitlement or a combination of other attributes like "employee", etc.
+
 # Installing a Jumphost
 
 This guide is for AlmaLinux, RockyLinux, CentOS Stream, Ubuntu and Debain. The roles were tested with RockyLinux 8 and 9, Ubuntu 22.04 and Debain 11. We recommend using Alma- or RockyLinux 9, Ubuntu 22.04 and Debain 11 or above because they ship with OpenSSH 8.4 and newer, which supports FIDO2 secure SSH keys. See the NEMO Yubikey documentation for setting up [FIDO2 SSH keys](https://github.com/nemo-cluster/yubikey#ssh-and-yubikeys).
