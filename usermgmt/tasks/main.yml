@@ -1,0 +1,29 @@
+---
+- name: Include all user variables
+  include_vars:
+    dir: vars
+    extensions:
+      - yaml
+      - yml
+
+- name: Setup Users
+  user:
+    name: '{{ item.username }}'
+    state: '{{ item.state | default("present") }}'
+    remove: true
+    shell: '{{ item.shell | default("/sbin/nologin") }}'
+  with_items: '{{ users }}'
+  loop_control:
+    label: '{{ item.username }}'
+
+- name: Setup SSH Keys
+  authorized_key:
+    manage_dir: yes
+    state: present
+    exclusive: yes
+    user: '{{ item.username }}'
+    key: "{{ item.key | join('\n') }}"
+  with_items: '{{ users }}'
+  when: ( item.state != "absent" )
+  loop_control:
+    label: '{{ item.username }}'

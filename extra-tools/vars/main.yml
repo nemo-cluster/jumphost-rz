@@ -1,0 +1,8 @@
+---
+extra_tools:
+  - ansible
+  - bash-completion
+  - fish
+  - git
+  - htop
+  - vim

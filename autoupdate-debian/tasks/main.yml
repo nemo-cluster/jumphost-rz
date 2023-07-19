@@ -1,0 +1,31 @@
+---
+- name: Install package for automatic updates
+  apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - unattended-upgrades
+      - apt-listchanges
+
+- name: Enable automatic updates
+  lineinfile:
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    regexp: '^APT::Periodic::Update-Package-Lists.*'
+    line: 'APT::Periodic::Update-Package-Lists "1";'
+  notify:
+    - restart unattended-upgrades
+
+- name: Set automatic update type
+  lineinfile:
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    regexp: '^APT::Periodic::Unattended-Upgrade.*'
+    line: 'APT::Periodic::Unattended-Upgrade "1";'
+  notify:
+    - restart unattended-upgrades
+
+- name: Start unattended-upgrades service
+  service:
+    name: unattended-upgrades
+    state: started
+    enabled: yes

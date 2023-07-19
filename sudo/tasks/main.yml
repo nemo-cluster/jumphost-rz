@@ -1,0 +1,12 @@
+---
+- name: Add Admin to Sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: "^{{ sudo }}"
+    line: "{{ sudo }} ALL=(ALL) NOPASSWD:ALL"
+
+- name: Disable Requiretty from sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: "Defaults    requiretty"
+    line: "#Defaults    requiretty"

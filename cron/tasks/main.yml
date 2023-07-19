@@ -1,0 +1,17 @@
+---
+- name: copy cron file for user update
+  ansible.builtin.template:
+    src: user_update_ssh_keys.j2
+    dest: /usr/local/bin/user_update_ssh_keys.sh
+    owner: root
+    group: root
+    mode: 0700
+
+- name: Create cron for user management update
+  ansible.builtin.cron:
+    name: user management update
+    job: /usr/local/bin/user_update_ssh_keys.sh
+    day: "{{ day }}" 
+    hour: "{{ hour }}"
+    minute: "{{ minute }}"
+    user: root

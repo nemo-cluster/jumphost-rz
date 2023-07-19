@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# dir for git clone
+GITDIR=/tmp/jumphost
+
+# remove old dir
+rm -rf $GITDIR
+# clone only newest version of repo
+git clone --depth=1 {{ git }} $GITDIR
+# change to new temporary ansible dir
+cd $GITDIR
+# run user management role to update SSH keys
+if [ -e jumphost.yml ] && [ -e usermgmt/vars/main.yml ]; then
+    ANSIBLE_LOCALHOST_WARNING=false ansible-playbook -t usermgmt jumphost.yml 2>>/tmp/ansible.log
+fi
+# remove directory again
+rm -rf $GITDIR

@@ -1,0 +1,5 @@
+---
+- name: restart dnf-automatic.timer
+  ansible.builtin.service:
+    name: dnf-automatic.timer
+    state: restarted

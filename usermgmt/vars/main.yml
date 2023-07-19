@@ -1,0 +1,35 @@
+---
+users:
+- name: Admin           # do not change admin user (only name, if necessary)
+  username: admin       # login name, can be changed
+  shell: /bin/bash      # defaults to /sbin/nologin, only admin should be able to login
+  state: present        # present creates, absent deletes user
+  # add one or more keys seperated with newline
+  key:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDmNcTlcTxzh/sN+iMdgSg/OaOB8kAFPsPreh2CDPuyO7+cmBkwrlUZgomhYcRGC0zS1P7+MFcEmwc3s4AhUgxO2pUCPGuoVwZd5DLQ5lZokarWLq1hNuQUrN+ogNCOz78Taw6HnDTpDXs0iCcAUlPX743/ZsPs5ODOXzNHnudIp/XlNaQJGsDuSyqHosoyb7OFJNy13u70nkHNctadU+kyinO3aPLUPrE1Qb/f3l7HexN5dNX7f9eTG/1asKitN00b2RrRDYhejvOsnf++WPi9EBVx70OTgzoG3gc45fk87wTw+HDHvV3JZbcuevs6+qv4oHxqCpQ736NFMFztbyQ4xm3eBJetZ+cFNrI1deJfgInisfmfo8zo28pIuTN98n/WxwFY4UpvJXAXmyoUfz15hC1r0mL2gbsJhmEJGRCUoEmgF23W8yPyTVVEIoTYKUwWL80EaS1uZN4rMEAsHWl1D+Fof+VKGoi9a3fFRIACPEW5Ca5QZldqY1fN/eRfdRE= user1-home'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0u2iq03O3n061GYmvjEu+TfOUzwnqz97nt5yvD1WdxjCibLdP8R5/K9XDIG/CEt5FFZuobSjDlw1ZrA+GlJL9IRD3E30nuFpJ+e93FaI8YJ79QRdeBXj/vFfgZ6KxcmAf9JI0rgSLklZ++yByumaIi7mLgpYXRJqij0hYLaW3QYJJz6VHbyL6Su8Bi9unG+tSjzD1dyVTw+UZ5eCarxWz3mBlwNL1MN3jhwlx+eWjqlSRbdxXfQ+hOeCjTG7HifDzjNzkNXWI1CB5YIXgaP6aRYA/ZxmqgrRdFso2lCiZ26yQ1AWK9xSkoU8e9Y28yw6YjPl/0DITc/vvJf0i3e9/yaWjazvePb3OFPj6Dvmjq7Bdaou/ji/O+ELOiZ5G3c5HYNARQ2378PQtVEvF1wbf5WEMc+imYVmaVQIG9x62b1KrrDaxMgU23ixUZxJCmv2zEwZ38vj/DyE2PPUImWlsk7TF1md03F/edK5U1UJgiU0iOSzNz9IhvtSOagFDddk= user1-work'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDZQPUQiKIc7gociiK/xuA/MCdbIKYzmQiFWYAWtOwDP/6R/8N67z264C4kVF8gfP1pVqi/yxlrNf896EGVl5IBOv4/GLTrtVmCFoHpww/uW2qPm/XDJRY6z3xy6FFqcRfpA8rQSZ9jqmBTMDfnByesWMOq4gdQ2B2bmWpaPgYcedovzjOLINzzUyE05Z6bq8EHZSfZ63bHlz9WM06OyAes33fHgM1JefZH9KFFYmeOl8nEK1ANq23JkBI+WHWA4VtQE4KlkI5TTyd8lP/mA6peM7W+tFo/Isg8bKdzKxCoO8ABBtMGhYYmiGRr0zG8BfFP03E+Hh4C4Iz9IL8YEeIIrNoUpm8QXImoIN6EPOmV7t4pHnsMj0L/zfdGm46Bi2JNJKEHCu6bMK6jAjlmMcIi64LHt5qpq3cq/jKZixyglABTZWOhHuAzy1iMFIG1/QOjnrOxhyeQvEKx8k6lHgQbgSBQxOc8u2PgfIBT2KTbY3VDuY8PxlMdFFqu3GTsbkM= user2-laptop'
+
+- name: User One
+  username: user1
+  state: present
+  key:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDmNcTlcTxzh/sN+iMdgSg/OaOB8kAFPsPreh2CDPuyO7+cmBkwrlUZgomhYcRGC0zS1P7+MFcEmwc3s4AhUgxO2pUCPGuoVwZd5DLQ5lZokarWLq1hNuQUrN+ogNCOz78Taw6HnDTpDXs0iCcAUlPX743/ZsPs5ODOXzNHnudIp/XlNaQJGsDuSyqHosoyb7OFJNy13u70nkHNctadU+kyinO3aPLUPrE1Qb/f3l7HexN5dNX7f9eTG/1asKitN00b2RrRDYhejvOsnf++WPi9EBVx70OTgzoG3gc45fk87wTw+HDHvV3JZbcuevs6+qv4oHxqCpQ736NFMFztbyQ4xm3eBJetZ+cFNrI1deJfgInisfmfo8zo28pIuTN98n/WxwFY4UpvJXAXmyoUfz15hC1r0mL2gbsJhmEJGRCUoEmgF23W8yPyTVVEIoTYKUwWL80EaS1uZN4rMEAsHWl1D+Fof+VKGoi9a3fFRIACPEW5Ca5QZldqY1fN/eRfdRE= user1-home'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0u2iq03O3n061GYmvjEu+TfOUzwnqz97nt5yvD1WdxjCibLdP8R5/K9XDIG/CEt5FFZuobSjDlw1ZrA+GlJL9IRD3E30nuFpJ+e93FaI8YJ79QRdeBXj/vFfgZ6KxcmAf9JI0rgSLklZ++yByumaIi7mLgpYXRJqij0hYLaW3QYJJz6VHbyL6Su8Bi9unG+tSjzD1dyVTw+UZ5eCarxWz3mBlwNL1MN3jhwlx+eWjqlSRbdxXfQ+hOeCjTG7HifDzjNzkNXWI1CB5YIXgaP6aRYA/ZxmqgrRdFso2lCiZ26yQ1AWK9xSkoU8e9Y28yw6YjPl/0DITc/vvJf0i3e9/yaWjazvePb3OFPj6Dvmjq7Bdaou/ji/O+ELOiZ5G3c5HYNARQ2378PQtVEvF1wbf5WEMc+imYVmaVQIG9x62b1KrrDaxMgU23ixUZxJCmv2zEwZ38vj/DyE2PPUImWlsk7TF1md03F/edK5U1UJgiU0iOSzNz9IhvtSOagFDddk= user1-work'
+
+- name: User Two
+  username: user2
+  state: present
+  key:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDZQPUQiKIc7gociiK/xuA/MCdbIKYzmQiFWYAWtOwDP/6R/8N67z264C4kVF8gfP1pVqi/yxlrNf896EGVl5IBOv4/GLTrtVmCFoHpww/uW2qPm/XDJRY6z3xy6FFqcRfpA8rQSZ9jqmBTMDfnByesWMOq4gdQ2B2bmWpaPgYcedovzjOLINzzUyE05Z6bq8EHZSfZ63bHlz9WM06OyAes33fHgM1JefZH9KFFYmeOl8nEK1ANq23JkBI+WHWA4VtQE4KlkI5TTyd8lP/mA6peM7W+tFo/Isg8bKdzKxCoO8ABBtMGhYYmiGRr0zG8BfFP03E+Hh4C4Iz9IL8YEeIIrNoUpm8QXImoIN6EPOmV7t4pHnsMj0L/zfdGm46Bi2JNJKEHCu6bMK6jAjlmMcIi64LHt5qpq3cq/jKZixyglABTZWOhHuAzy1iMFIG1/QOjnrOxhyeQvEKx8k6lHgQbgSBQxOc8u2PgfIBT2KTbY3VDuY8PxlMdFFqu3GTsbkM= user2-laptop'
+
+- name: User Three
+  username: user3
+  state: absent         # delete user
+  key:
+
+- name: User Four
+  username: user4
+  state: present
+  key:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDXtm2IlWz+cBDgtFenFrLZ2rcK/9ek9Mt6ouNKoVW2lYTjgyMOv/apvkRjErFGIUnOE/FDtN9Lkay35R9hQB6/dPmqqlICvUMHngY1AaqRsCSM7U4mEoJA/kC9oFSHvq2bsuHMFiq+VN0vj5hqeEWOtytbmUF47h/WKng8CYYZNTYYYiWEyXD8eSYbCIEoadx7UOp96YaqScnBA5KZOaZFMNOgxir/fSWBxXngN2FPGAe7okkDXq9AIgYDUZHhR4OgLOUn+71op8Sn6YpAh5TKn4AP+mYlEEs6+LJQUxf5wCaTsIqg7cgufDYGt7uSElijL5Ao/oWuPFhlMxIxsIh47NYYEBzP3Yg+nJTip26sKAY7YmoqFYy+gVv7mSyF9IA6QhqSk7AdYM7naGCi67fSi/BNsuw33GMUyjQg3h6VRKHRf4865aQor4Ai/XwptN4SgonDch/ikqPW97Co+pAsrUEDw3GuYsdvjXd97YXMrpZWBTTP9PiMLsO2S7Pt/uk= user3-id_rsa'

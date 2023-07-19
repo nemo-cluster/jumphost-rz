@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  gather_facts: yes
+  roles:
+    - { role: epel-repo,          tags: [ "main", "core", "epel-repo" ] }
+    - { role: osupdate,           tags: [ "main", "osupdate", "never" ] }
+    - { role: usermgmt,           tags: [ "main", "core", "usermgmt"  ] }
+    - { role: sudo,               tags: [ "main", "core", "sudo"      ] }
+    - { role: ssh,                tags: [ "main", "ssh"               ] }
+    - { role: autoupdate-rhel,    tags: [ "main", "autoupdate"        ], when: ansible_os_family == "RedHat" }
+    - { role: autoupdate-debian,  tags: [ "main", "autoupdate"        ], when: ansible_os_family == "Debian" }
+    - { role: fail2ban,           tags: [ "main", "fail2ban"          ] }
+    - { role: extra-tools,        tags: [ "main", "extra-tools"       ] }
+    - { role: delclouduser,       tags: [ "main", "delclouduser"      ] }
+    - { role: cron,               tags: [ "cron", "never"             ] }

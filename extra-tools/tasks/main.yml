@@ -1,0 +1,14 @@
+---
+- name: Install extra tools
+  yum:
+    name: "{{ extra_tools }}"
+    state: present
+  when:
+  - ansible_os_family == "RedHat"
+
+- name: Install extra tools
+  apt:
+    name: "{{ extra_tools }}"
+    state: present
+  when:
+  - ansible_os_family == "Debian"

@@ -1,0 +1,5 @@
+---
+git: "git@github.com:<user>/<jumphost>.git"
+day: "*"
+hour: "*"
+minute: "*/15"

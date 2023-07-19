@@ -1,0 +1,30 @@
+---
+- name: Install package for automatic updates
+  yum:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - dnf-automatic
+
+- name: Enable automatic updates
+  lineinfile:
+    dest: /etc/dnf/automatic.conf
+    regexp: "^apply_updates"
+    line: "apply_updates = yes"
+  notify:
+    - restart dnf-automatic.timer
+
+- name: Set automatic update type
+  lineinfile:
+    dest: /etc/dnf/automatic.conf
+    regexp: "^upgrade_type"
+    line: "upgrade_type = {{ upgrade_type }}"
+  notify:
+    - restart dnf-automatic.timer
+
+- name: Start auto update service
+  service:
+    name: dnf-automatic.timer
+    state: started
+    enabled: yes
